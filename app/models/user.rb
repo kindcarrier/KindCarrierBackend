@@ -1,21 +1,21 @@
 class User < ApplicationRecord
-	authenticates_with_sorcery!
-	
-	validates :password, presence: true, on: :create
+  authenticates_with_sorcery!
 
-	def authenticate!(email, password)
-		user = authenticate(email, password)
+  validates :password, presence: true, on: :create
 
-		raise Exceptions::UnauthorizedError, 'Incorrect login or password' unless user
+  def authenticate!(email, password)
+    user = authenticate(email, password)
 
-		user
-	end
+    raise Exceptions::UnauthorizedError, 'Incorrect login or password' unless user
 
-	def authenticate(email, password)
-		user = find_by(email: email)
+    user
+  end
 
-		return if user.blank?
+  def authenticate(email, password)
+    user = find_by(email: email)
 
-		user.valid_password?(password)
-	end
+    return if user.blank?
+
+    user.valid_password?(password)
+  end
 end
