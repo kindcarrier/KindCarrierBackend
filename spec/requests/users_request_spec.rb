@@ -6,7 +6,7 @@ RSpec.describe 'Users', type: :request do
   path '/users' do
     post('User') do
       consumes 'application/json'
-      tags 'Users', 'Create'
+      tags 'Users'
 
       EXAMPLE = {
         email: FFaker::Internet.email,
