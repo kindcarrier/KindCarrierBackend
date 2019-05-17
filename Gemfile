@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -42,9 +44,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rswag-specs'
   gem 'rubocop', '~> 0.61.1', require: false
+  gem 'sqlite3', '~> 1.3.6'
   gem 'vcr'
   gem 'webmock'
-  gem "sqlite3", "~> 1.3.6"
 end
 
 group :development do
