@@ -1,0 +1,135 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API",
+    "version": "v1"
+  },
+  "paths": {
+    "/session": {
+      "post": {
+        "summary": "Sign in user",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "credentials",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "email",
+                "password"
+              ],
+              "example": {
+                "email": "john@brown",
+                "password": "123456"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user successfully signed in",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/user"
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "summary": "User",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Users",
+          "Create"
+        ],
+        "parameters": [
+          {
+            "name": "payload",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "first_name": {
+                  "type": "string"
+                },
+                "last_name": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "required": [
+                  "email",
+                  "password",
+                  "first_name",
+                  "last_name"
+                ],
+                "example": {
+                  "email": "rolf_mayert@king.biz",
+                  "first_name": "Kristian",
+                  "last_name": "Frami",
+                  "password": "ovn1ZWGPC"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "user created",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/user"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "user": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "first_name",
+        "last_name"
+      ]
+    }
+  }
+}
