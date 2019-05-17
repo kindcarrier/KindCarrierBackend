@@ -5,7 +5,6 @@ class MakeUsersFieldsNotNull < ActiveRecord::Migration[5.2]
       t.change :last_name, :string, null: false
       t.change :email, :string, null: false
       t.change :crypted_password, :string, null: false
-      t.change :salt, :string, null: false
       t.change :token, :string, null: false
 
       t.index :email, unique: true
@@ -18,7 +17,6 @@ class MakeUsersFieldsNotNull < ActiveRecord::Migration[5.2]
       t.change :last_name, :string, null: true
       t.change :email, :string, null: true
       t.change :crypted_password, :string, null: true
-      t.change :salt, :string, null: true
       t.change :token, :string, null: true
 
       t.remove_index :email

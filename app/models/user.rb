@@ -1,7 +1,10 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
-  validates :password, presence: true, on: :create
+  validates :first_name, :last_name, :password, :email, 
+    :crypted_password, presence: true
+  validates :email, uniqueness: true
+
   before_create :generate_token
 
   def self.authenticate!(email, password)

@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_05_17_223503) do
     t.string "crypted_password", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "salt", null: false
+    t.string "salt"
     t.string "token", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
