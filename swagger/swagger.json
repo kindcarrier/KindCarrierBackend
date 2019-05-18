@@ -86,10 +86,10 @@
                   "last_name"
                 ],
                 "example": {
-                  "email": "henriette.greenfelder@beattyweber.us",
-                  "first_name": "Shavonne",
-                  "last_name": "Rohan",
-                  "password": "TDJTLVRP"
+                  "email": "evalyn@mosciskibarrows.co.uk",
+                  "first_name": "Nicolasa",
+                  "last_name": "Funk",
+                  "password": "_pd_4_otdc7v"
                 }
               }
             }
@@ -122,12 +122,28 @@
         },
         "token": {
           "type": "string"
+        },
+        "avatar": {
+          "$ref": "#/definitions/avatar"
         }
       },
       "required": [
         "email",
         "first_name",
-        "last_name"
+        "last_name",
+        "avatar"
+      ]
+    },
+    "avatar": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "required": [
+        "url"
       ]
     }
   }
