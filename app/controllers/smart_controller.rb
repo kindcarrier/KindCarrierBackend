@@ -1,18 +1,16 @@
 class SmartController < ApiController
-  BASE_METHODS=[:index, :show, :create, :update]
-
   class << self
     def create(allowed_params:)
       define_method :create do 
-        record = model.create!(params.permit(allowed_params))
-        render json: record, status: :created
+        created_record = model.create!(params.permit(allowed_params))
+        render json: created_record, status: :created
       end
     end
 
     def update(allowed_params:)
       define_method :update do
-        record = model.update!(params.permit(allowed_params))
-        render json: record, status: :updated
+        updated_record = record_by_id.update!(params.permit(allowed_params))
+        render json: updated_record, status: :updated
       end
     end
 
@@ -25,8 +23,7 @@ class SmartController < ApiController
 
     def show
       define_method :show do
-        record = model.find(params[:id])
-        render json: record, status: :ok
+        render json: record_by_id, status: :ok
       end
     end
   end
@@ -46,5 +43,9 @@ class SmartController < ApiController
   def per_page
     page_size = params[:per_page] || 50
     page_size > MAX_PER_PAGE ? MAX_PER_PAGE : page_size
+  end
+
+  def record_by_id
+    model.find(params[:id])
   end
 end
