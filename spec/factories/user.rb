@@ -4,5 +4,6 @@ FactoryBot.define do
     last_name  { 'Doe' }
     email { 'test@email.com' }
     token { 'sha1' }
+    password { 'password' }
   end
 end

@@ -9,8 +9,8 @@ class SmartController < ApiController
 
     def update(allowed_params:)
       define_method :update do
-        updated_record = record_by_id.update!(params.permit(allowed_params))
-        render json: updated_record, status: :updated
+        record_by_id.update!(params.permit(allowed_params))
+        render json: record_by_id, status: :ok
       end
     end
 
