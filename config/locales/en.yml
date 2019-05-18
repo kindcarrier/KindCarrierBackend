@@ -31,3 +31,7 @@
 
 en:
   hello: "Hello world"
+  active_interaction:
+      errors:
+        messages:
+          not_belongs: not belongs to current user

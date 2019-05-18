@@ -6,6 +6,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, presence: true, if: proc { |obj| obj.new_record? }
 
+  has_many :messages
+
   before_create :generate_token
 
   def self.authenticate!(email, password)
