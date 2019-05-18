@@ -1,0 +1,2 @@
+class NegotiationsController < ApiController
+end

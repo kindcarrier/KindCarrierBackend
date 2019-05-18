@@ -19,6 +19,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
 gem 'active_interaction'
+gem 'activerecord-postgis-adapter'
 gem 'dotenv-rails'
 gem 'pundit'
 gem 'rack-cors'
@@ -30,6 +31,7 @@ gem 'sorcery'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'kaminari'
 
 group :development, :test do
   gem 'capybara'

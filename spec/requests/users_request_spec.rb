@@ -28,7 +28,6 @@ RSpec.describe 'Users', type: :request do
       response '201', 'user created' do
         schema type: 'object', '$ref' => '#/definitions/user'
         let(:payload) { EXAMPLE }
-        before(:each) { expect(CreateUser).to receive(:run!).and_call_original }
         run_test! do
           expect(json_response).to include(EXAMPLE.as_json(only: %i[email first_name last_name]))
         end

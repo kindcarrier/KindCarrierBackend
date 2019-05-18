@@ -4,6 +4,8 @@ class User < ApplicationRecord
   validates :password, presence: true, on: :create
   before_create :generate_token
 
+  CREATE_PARAMS = %w[email first_name last_name password].freeze
+
   def self.authenticate!(email, password)
     user = authenticate(email, password)
 
