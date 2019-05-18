@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_18_003334) do
+ActiveRecord::Schema.define(version: 2019_05_18_102016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "deals", force: :cascade do |t|
+    t.integer "negotiation_ids", array: true
+    t.string "photo"
+    t.string "description"
+    t.decimal "supplying_cost", default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "negotiations", force: :cascade do |t|
     t.string "name", null: false
