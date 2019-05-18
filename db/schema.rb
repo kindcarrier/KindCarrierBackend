@@ -15,6 +15,26 @@ ActiveRecord::Schema.define(version: 2019_05_18_003334) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "negotiations", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "photo"
+    t.string "description", null: false
+    t.decimal "service_cost", default: "0.0", null: false
+    t.string "country"
+    t.string "state"
+    t.string "city"
+    t.string "street"
+    t.float "latitude_from"
+    t.float "longitude_from"
+    t.float "latitude_to"
+    t.float "longitude_to"
+    t.integer "type"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_negotiations_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -28,4 +48,5 @@ ActiveRecord::Schema.define(version: 2019_05_18_003334) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "negotiations", "users"
 end

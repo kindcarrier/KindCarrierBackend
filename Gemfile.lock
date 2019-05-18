@@ -40,6 +40,9 @@ GEM
       activemodel (= 5.2.3)
       activesupport (= 5.2.3)
       arel (>= 9.0)
+    activerecord-postgis-adapter (5.2.2)
+      activerecord (~> 5.1)
+      rgeo-activerecord (~> 6.0)
     activestorage (5.2.3)
       actionpack (= 5.2.3)
       activerecord (= 5.2.3)
@@ -109,6 +112,18 @@ GEM
       addressable (>= 2.4)
     jsonapi-renderer (0.2.0)
     jwt (2.1.0)
+    kaminari (1.1.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.1.1)
+      kaminari-activerecord (= 1.1.1)
+      kaminari-core (= 1.1.1)
+    kaminari-actionview (1.1.1)
+      actionview
+      kaminari-core (= 1.1.1)
+    kaminari-activerecord (1.1.1)
+      activerecord
+      kaminari-core (= 1.1.1)
+    kaminari-core (1.1.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -194,6 +209,10 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     regexp_parser (1.5.0)
+    rgeo (2.0.1)
+    rgeo-activerecord (6.2.0)
+      activerecord (>= 5.0)
+      rgeo (>= 1.0.0)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
@@ -298,6 +317,7 @@ PLATFORMS
 DEPENDENCIES
   active_interaction
   active_model_serializers
+  activerecord-postgis-adapter
   bootsnap (>= 1.1.0)
   capybara
   carrierwave (~> 1.0)
@@ -306,6 +326,7 @@ DEPENDENCIES
   factory_bot_rails
   ffaker
   fuubar
+  kaminari
   listen (>= 3.0.5, < 3.2)
   mini_magick
   pg
