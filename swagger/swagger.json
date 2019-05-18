@@ -86,10 +86,10 @@
                   "last_name"
                 ],
                 "example": {
-                  "email": "evalyn@mosciskibarrows.co.uk",
-                  "first_name": "Nicolasa",
-                  "last_name": "Funk",
-                  "password": "_pd_4_otdc7v"
+                  "email": "mitchel_quitzon@johnston.biz",
+                  "first_name": "Iraida",
+                  "last_name": "Schaden",
+                  "password": "eK118noQTyRr21"
                 }
               }
             }
@@ -98,6 +98,60 @@
         "responses": {
           "201": {
             "description": "user created",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/user"
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "put": {
+        "summary": "User",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "payload",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "first_name": {
+                  "type": "string"
+                },
+                "last_name": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "first_name": "Kyong",
+                "last_name": "Kuhlman"
+              }
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user updated",
             "schema": {
               "type": "object",
               "$ref": "#/definitions/user"
