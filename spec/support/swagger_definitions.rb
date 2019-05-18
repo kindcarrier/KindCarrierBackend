@@ -24,7 +24,7 @@ module SwaggerDefinitions
     {
       type: :object,
       properties: {
-        url: { type: :string, 'x-nullable': true },
+        url: { type: :string, 'x-nullable': true }
       },
       required: %w[url]
     }

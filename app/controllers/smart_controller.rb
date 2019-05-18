@@ -1,7 +1,7 @@
 class SmartController < ApiController
   class << self
     def create(allowed_params:)
-      define_method :create do 
+      define_method :create do
         created_record = model.create!(params.permit(allowed_params))
         render json: created_record, status: :created
       end

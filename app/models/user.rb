@@ -2,9 +2,9 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   mount_uploader :avatar, AvatarUploader
 
-  validates :first_name, :last_name, :password, :email,
-    :crypted_password, presence: true
+  validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true
+  validates :password, presence: true, if: proc { |obj| obj.new_record? }
 
   before_create :generate_token
 
