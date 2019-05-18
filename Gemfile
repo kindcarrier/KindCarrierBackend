@@ -21,12 +21,12 @@ gem 'turbolinks', '~> 5'
 
 gem 'active_interaction'
 gem 'dotenv-rails'
+gem 'mini_magick'
 gem 'pundit'
 gem 'rack-cors'
 gem 'rswag-api'
 gem 'rswag-ui'
 gem 'sorcery'
-gem 'mini_magick'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
