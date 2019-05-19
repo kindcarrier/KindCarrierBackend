@@ -1,4 +1,4 @@
 class Message < ApplicationRecord
-  belongs_to :deal
+  belongs_to :negotiation
   belongs_to :user
 end

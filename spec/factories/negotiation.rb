@@ -11,8 +11,8 @@ FactoryBot.define do
         city: FFaker::Address.city,
         state: FFaker::AddressUS.state,
         street: FFaker::Address.street_name,
-        latitude_from: 90,
-        longitude_from: 180
+        latitude: 90,
+        longitude: 180
       }
     end
     address_to do
@@ -21,8 +21,8 @@ FactoryBot.define do
         city: FFaker::Address.city,
         state: FFaker::AddressUS.state,
         street: FFaker::Address.street_name,
-        latitude_from: 90,
-        longitude_from: 180
+        latitude: 90,
+        longitude: 180
       }
     end
     type { 0 }

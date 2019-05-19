@@ -1,30 +1,28 @@
 class CreateMessage < ApplicationInteractor
   string :text
-  integer :deal_id
+  integer :negotiation_id
   object :user
 
   validate :deal_of_current_user?
-  validates :deal, presence: true
+  validates :negotiation, presence: true
 
   def execute
     Message.create!(text: text,
-                    deal: deal,
+                    negotiation: negotiation,
                     user: user)
   end
 
   private
 
-  def deal_of_current_user?
-    errors.add(:deal_id, :not_belongs) unless deal_user_ids.include?(user.id)
+  def check_for_current_user
+    errors.add(:negotiation_id, :not_belongs) unless negotiation_linked_to_user?
   end
 
-  def deal_user_ids
-    deal.negotiations.map do |negotiation|
-      negotiation.user.id
-    end
+  def negotiation
+    @negotiation ||= Negotiation.find(deal_id)
   end
 
-  def deal
-    @deal ||= Deal.find(deal_id)
+  def negotiation_linked_to_user?
+    negotiation.owner == user || negotiation.accepter == user
   end
 end
