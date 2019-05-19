@@ -46,22 +46,18 @@
                 "street": {
                   "type": "string"
                 },
-                "latitude_from": {
-                  "type": "number"
-                },
-                "longitude_from": {
-                  "type": "number"
-                },
-                "latitude_to": {
-                  "type": "number"
-                },
-                "longitude_to": {
-                  "type": "number"
-                },
                 "type": {
                   "type": "string"
                 },
-                "user_id": {
+                "address_from": {
+                  "type": "object",
+                  "x-nullable": true
+                },
+                "address_to": {
+                  "type": "object",
+                  "x-nullable": true
+                },
+                "owner_id": {
                   "type": "integer"
                 },
                 "required": [
@@ -77,8 +73,7 @@
                   "longitude_from",
                   "latitude_to",
                   "longitude_to",
-                  "type",
-                  "user"
+                  "type"
                 ],
                 "example": {
                   "name": "Chezh beer",
@@ -259,10 +254,10 @@
                   "last_name"
                 ],
                 "example": {
-                  "email": "rutha_kling@leffler.co.uk",
-                  "first_name": "Desirae",
-                  "last_name": "Gerhold",
-                  "password": "pWTEeDZe5U"
+                  "email": "meghann_carroll@shanahanstiedemann.name",
+                  "first_name": "Isreal",
+                  "last_name": "Hane",
+                  "password": "Y1LSDDV0_fdLi19n"
                 }
               }
             }
@@ -304,8 +299,8 @@
                 }
               },
               "example": {
-                "first_name": "Malinda",
-                "last_name": "Bode"
+                "first_name": "Kym",
+                "last_name": "Legros"
               }
             }
           },

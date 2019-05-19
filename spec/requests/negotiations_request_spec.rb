@@ -11,16 +11,20 @@ RSpec.describe 'Negotiations', type: :request do
         photo: 'test_photo.png',
         description: 'Wanna some authentic Czech beer',
         service_cost: 15,
-        country: 'Chezh',
-        city: 'Prague',
-        state: 'Hlavni mesto Praha',
-        street: 'Podbelohorska',
-        latitude_from: 50.075455,
-        longitude_from: 14.371850,
-        latitude_to: 53.36056,
-        longitude_to: 83.76361,
-        'type' => 'request',
         owner_id: 1
+        address_from: { 
+          country: 'Chezh',
+          city: 'Prague',
+          state: 'Hlavni mesto Praha',
+          street: 'Podbelohorska',
+        }
+        address_from: { 
+          country: 'Russia',
+          city: 'Barnaul',
+          state: 'Altay kray',
+          street: 'Pionerskaya dolina',
+        }
+        'type' => 'request',
       }.freeze
 
       parameter name: :payload, in: :body, required: true, schema: {
@@ -34,18 +38,16 @@ RSpec.describe 'Negotiations', type: :request do
           city: { type: :string },
           state: { type: :string },
           street: { type: :string },
-          latitude_from: { type: :number },
-          longitude_from: { type: :number },
-          latitude_to: { type: :number },
-          longitude_to: { type: :number },
           type: { type: :string },
+          address_from: { type: :object, 'x-nullable': true },
+          address_to: { type: :object, 'x-nullable': true },
           owner_id: { type: :integer },
           required: %w[name photo description service_cost country
                        city state street latitude_from longitude_from latitude_to
                        longitude_to type],
           example: NEGOTIATION_CREATE_EXAMPLE
         }
-      }
+      }  
 
       parameter name: :authorization, in: :header, type: :string, required: true
 
