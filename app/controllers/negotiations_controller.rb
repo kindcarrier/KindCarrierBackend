@@ -1,7 +1,7 @@
 class NegotiationsController < SmartController
   skip_before_action :authenticate_user, only: [:index]
 
-  create allowed_params: Negotiation.attribute_names - %w[id created_at updated_at]
+  # create allowed_params: Negotiation.attribute_names - %w[id created_at updated_at]
   show
 
   def index
@@ -17,6 +17,11 @@ class NegotiationsController < SmartController
   def cancel
     negotiation = CancelNegotiation.run!(change_status_params)
     render json: negotiation, status: :ok
+  end
+
+  def create
+    created_record = model.create!(params.permit!)
+        render json: created_record, status: :created
   end
 
   private
