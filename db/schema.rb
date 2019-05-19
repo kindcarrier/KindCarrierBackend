@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_19_044959) do
+ActiveRecord::Schema.define(version: 2019_05_19_075217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_05_19_044959) do
     t.datetime "updated_at", null: false
     t.json "address_from"
     t.json "address_to"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.bigint "owner_id"
     t.bigint "accepter_id"
     t.index ["accepter_id"], name: "index_negotiations_on_accepter_id"

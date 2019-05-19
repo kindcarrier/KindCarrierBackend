@@ -5,7 +5,7 @@ class FetchNegotiations < ApplicationInteractor
   validates :per_page, numericality: { less_than_or_equal_to: 100 }
 
   def execute
-    scope = Negotiation.all
+    scope = Negotiation.opened
     scope = scope.where(type: type) if type.present?
     scope = scope.page(page).per(per_page)
     scope
