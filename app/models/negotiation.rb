@@ -2,6 +2,7 @@ class Negotiation < ApplicationRecord
   self.inheritance_column = :_type_disabled
   belongs_to :owner, class_name: 'User', required: false
   belongs_to :accepter, class_name: 'User', required: false
+  has_many :messages
 
   module TYPES
     REQUEST = 0

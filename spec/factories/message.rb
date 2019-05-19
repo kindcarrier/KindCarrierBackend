@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :message do
     association :user
-    association :deal
+    association :negotiation
     text { 'text of message' }
   end
 end

@@ -13,8 +13,8 @@ FactoryBot.define do
         city: FFaker::Address.city,
         state: FFaker::AddressUS.state,
         street: FFaker::Address.street_name,
-        latitude: 90,
-        longitude: 180
+        latitude: rand(0..90),
+        longitude: rand(0..180)
       }
     end
     address_to do
@@ -23,8 +23,8 @@ FactoryBot.define do
         city: FFaker::Address.city,
         state: FFaker::AddressUS.state,
         street: FFaker::Address.street_name,
-        latitude: 90,
-        longitude: 180
+        latitude: rand(0..90),
+        longitude: rand(0..180)
       }
     end
     type { 0 }

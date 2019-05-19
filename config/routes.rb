@@ -8,6 +8,5 @@ Rails.application.routes.draw do
     put :cancel, on: :member
   end
   resources :messages, only: %i[index]
-  resources :deals, only: %i[index create show]
   resource :session, onle: [:create]
 end
