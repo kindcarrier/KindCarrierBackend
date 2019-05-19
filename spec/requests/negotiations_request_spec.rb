@@ -8,7 +8,7 @@ RSpec.describe 'Negotiations', type: :request do
 
       NEGOTIATION_CREATE_EXAMPLE = {
         name: 'Chezh beer',
-        photo: 'test_photo.png', # TODO: use image file faker
+        photo: 'test_photo.png',
         description: 'Wanna some authentic Czech beer',
         service_cost: 15,
         country: 'Chezh',
@@ -50,27 +50,22 @@ RSpec.describe 'Negotiations', type: :request do
       parameter name: :authorization, in: :header, type: :string, required: true
 
       response '201', 'negotiation created' do
-        # schema type: 'object', '$ref' => '#/definitions/negotiation'
+        schema type: 'object', '$ref' => '#/definitions/negotiation'
 
         let(:user) { create(:user, id: 1) }
         let(:authorization) { user.token }
         let(:payload) { NEGOTIATION_CREATE_EXAMPLE }
 
         run_test! do
-          binding.pry
-          #   expect(json_response).to include(EXAMPLE.as_json(only: %i[email first_name last_name]))
+          expect(json_response['name']).to eq('Chezh beer')
         end
       end
 
       response '401', 'Unauthorized' do
-        # schema type: 'object', '$ref' => '#/definitions/error'
-
         let(:authorization) { 'non_existing_token' }
         let(:payload) { NEGOTIATION_CREATE_EXAMPLE }
 
-        run_test! do
-          bindind.pry
-        end
+        run_test!
       end
     end
 
@@ -111,25 +106,16 @@ RSpec.describe 'Negotiations', type: :request do
         let(:authorization) { accepter.token }
 
         run_test! do
-          binding.pry
-        # expect(json_response[:status]).to eq(:confirmed)
-        # expect(json_response[:accepter][:id]).to eq(accepter.id)
+          expect(json_response['status']).to eq('confirmed')
+          expect(json_response['accepter_id']).to eq(accepter.id)
         end
       end
-      
+
       response '401', 'Unauthorized' do
-        # schema type: 'object', '$ref' => '#/definitions/negotiation'
+        let(:id) { 1 }
+        let(:authorization) { 'no' }
 
-        let(:negotiation) { create(:negotiation) }
-        let(:id) { negotiation.id }
-        let(:accepter) { create(:user) }
-        let(:authorization) { accepter.token }
-
-        run_test! do
-          binding.pry
-        # expect(json_response[:status]).to eq(:confirmed)
-        # expect(json_response[:accepter][:id]).to eq(accepter.id)
-        end
+        run_test!
       end
     end
   end
