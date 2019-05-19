@@ -1,11 +1,11 @@
 class FetchMessages < ApplicationInteractor
-  object :negotiation_id
+  integer :negotiation_id
   object :user
 
   validate :check_for_current_user
 
   def execute
-    negotiation.messages
+    negotiation.messages.order(:created_at)
   end
 
   private
