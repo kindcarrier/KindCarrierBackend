@@ -34,12 +34,12 @@ gem 'sorcery'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'kaminari'
+gem 'factory_bot_rails'
+gem 'ffaker'
 
 group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'factory_bot_rails'
-  gem 'ffaker'
   gem 'fuubar'
   gem 'pry-byebug'
   gem 'pry-rails'

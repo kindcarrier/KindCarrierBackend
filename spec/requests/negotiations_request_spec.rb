@@ -19,7 +19,7 @@ RSpec.describe 'Negotiations', type: :request do
         longitude_from: 14.371850,
         latitude_to: 53.36056,
         longitude_to: 83.76361,
-        type: 'request',
+        'type' => 'request',
         owner_id: 1
       }.freeze
 
@@ -39,10 +39,10 @@ RSpec.describe 'Negotiations', type: :request do
           latitude_to: { type: :number },
           longitude_to: { type: :number },
           type: { type: :string },
-          user_id: { type: :integer },
+          owner_id: { type: :integer },
           required: %w[name photo description service_cost country
                        city state street latitude_from longitude_from latitude_to
-                       longitude_to type user],
+                       longitude_to type],
           example: NEGOTIATION_CREATE_EXAMPLE
         }
       }
