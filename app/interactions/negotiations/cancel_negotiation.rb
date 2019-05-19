@@ -5,7 +5,7 @@ class CancelNegotiation < ApplicationInteractor
   validate :check_for_user
 
   def execute
-    negotiation.update!(status: :cancel)
+    negotiation.update!(status: :canceled)
     negotiation
   end
 

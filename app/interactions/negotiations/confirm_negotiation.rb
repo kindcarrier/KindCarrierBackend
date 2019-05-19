@@ -5,7 +5,7 @@ class ConfirmNegotiation < ApplicationInteractor
   validate :check_for_status
 
   def execute
-    negotiation.update!(status: :confirm, accepter_id: user.id)
+    negotiation.update!(status: :confirmed, accepter_id: user.id)
     negotiation
   end
 
