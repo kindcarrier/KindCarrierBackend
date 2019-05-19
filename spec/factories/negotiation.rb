@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :negotiation do
+    owner { FactoryBot.create(:user) }
     name { FFaker::Name.name }
     description { 'negotiation_description' }
     service_cost { rand(10..20) }
