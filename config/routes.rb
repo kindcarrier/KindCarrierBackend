@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     put :confirm, on: :member
     put :cancel, on: :member
   end
+  resources :messages, only: %i[index]
   resources :deals, only: %i[index create show]
   resource :session, onle: [:create]
 end
