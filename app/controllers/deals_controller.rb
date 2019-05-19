@@ -3,7 +3,7 @@ class DealsController < SmartController
   #   deal = CreateDeal.run!(create_params)
   #   render json: deal
   # end
-  create allowed_params: Deals.attribute_names - %w[id created_at updated_at]
+  create allowed_params: Deal.attribute_names - %w[id created_at updated_at]
   index
   show
 
