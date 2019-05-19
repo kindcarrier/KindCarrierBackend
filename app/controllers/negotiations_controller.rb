@@ -20,7 +20,7 @@ class NegotiationsController < SmartController
   end
 
   def create
-    created_record = model.create!(params.permit!)
+    created_record = Negotiation.create!(params.permit!)
         render json: created_record, status: :created
   end
 
