@@ -1,10 +1,10 @@
 require 'rails_helper'
 RSpec.describe FetchNegotiations do
-  let!(:recipient_negotiation) { create(:negotiation, type: 0) }
-  let!(:delivery_negotiation) { create(:negotiation, type: 1) }
+  let!(:request_negotiation) { create(:negotiation, type: 'request') }
+  let!(:offer_negotiation) { create(:negotiation, type: 'offer') }
   let(:command) { described_class.run!(type: type) }
 
-  context 'fetch recipients' do
+  context 'fetch all negotiations' do
     let(:type) { nil }
 
     it 'return 2 negotiation' do
@@ -12,21 +12,21 @@ RSpec.describe FetchNegotiations do
     end
   end
 
-  context 'fetch recipients' do
-    let(:type) { 0 }
+  context 'fetch requests' do
+    let(:type) { 'request' }
 
-    it 'return recipient' do
+    it 'return request' do
       expect(command.count).to eq(1)
-      expect(command.first).to eq(recipient_negotiation)
+      expect(command.first).to eq(request_negotiation)
     end
   end
 
-  context 'fetch recipients' do
-    let(:type) { 1 }
+  context 'fetch offers' do
+    let(:type) { 'offer' }
 
-    it 'return recipient' do
+    it 'return offer' do
       expect(command.count).to eq(1)
-      expect(command.first).to eq(delivery_negotiation)
+      expect(command.first).to eq(offer_negotiation)
     end
   end
 end

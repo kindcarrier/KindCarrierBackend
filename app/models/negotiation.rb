@@ -1,6 +1,10 @@
 class Negotiation < ApplicationRecord
   self.inheritance_column = :_type_disabled
-  belongs_to :owner, class_name: 'User', optional: true
-  belongs_to :accepter, class_name: 'User', optional: true
-  enum type: { request: 0, offer: 1 }
+  belongs_to :owner, class_name: 'User', required: false
+  belongs_to :accepter, class_name: 'User', required: false
+  module TYPES
+    REQUEST = 0
+    OFFER = 1
+  end
+  enum type: { request: TYPES::REQUEST, offer: TYPES::OFFER }
 end

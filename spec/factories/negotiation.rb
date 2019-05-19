@@ -1,9 +1,10 @@
 FactoryBot.define do
   factory :negotiation do
-    association :user
     name { FFaker::Name.name }
     description { 'negotiation_description' }
     service_cost { rand(10..20) }
+    owner_id { create(:user).id }
+    accepter_id { create(:user).id }
 
     address_from do
       {

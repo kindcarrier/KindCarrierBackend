@@ -3,7 +3,7 @@ class CreateMessage < ApplicationInteractor
   integer :negotiation_id
   object :user
 
-  validate :deal_of_current_user?
+  validate :check_for_current_user
   validates :negotiation, presence: true
 
   def execute
@@ -19,7 +19,7 @@ class CreateMessage < ApplicationInteractor
   end
 
   def negotiation
-    @negotiation ||= Negotiation.find(deal_id)
+    @negotiation ||= Negotiation.find(negotiation_id)
   end
 
   def negotiation_linked_to_user?

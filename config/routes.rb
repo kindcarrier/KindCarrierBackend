@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount Rswag::Ui::Engine => '/'
   mount Rswag::Api::Engine => '/'
-  
+
   resources :users, only: %i[index create show update]
   resources :negotiations, only: %i[index create show] do
     put :confirm, on: :member
