@@ -11,20 +11,20 @@ RSpec.describe 'Negotiations', type: :request do
         photo: 'test_photo.png',
         description: 'Wanna some authentic Czech beer',
         service_cost: 15,
-        owner_id: 1
-        address_from: { 
+        owner_id: 1,
+        address_from: {
           country: 'Chezh',
           city: 'Prague',
           state: 'Hlavni mesto Praha',
-          street: 'Podbelohorska',
-        }
-        address_from: { 
+          street: 'Podbelohorska'
+        },
+        address_to: {
           country: 'Russia',
           city: 'Barnaul',
           state: 'Altay kray',
-          street: 'Pionerskaya dolina',
-        }
-        'type' => 'request',
+          street: 'Pionerskaya dolina'
+        },
+        'type' => 'request'
       }.freeze
 
       parameter name: :payload, in: :body, required: true, schema: {
@@ -47,7 +47,7 @@ RSpec.describe 'Negotiations', type: :request do
                        longitude_to type],
           example: NEGOTIATION_CREATE_EXAMPLE
         }
-      }  
+      }
 
       parameter name: :authorization, in: :header, type: :string, required: true
 
@@ -105,7 +105,7 @@ RSpec.describe 'Negotiations', type: :request do
         let(:negotiation) { create(:negotiation, owner: owner) }
         let(:id) { negotiation.id }
         let(:accepter) { create(:user) }
-        let(:authorization) { accepter.token }
+        let(:authorization) { owner.token }
 
         run_test! do
           expect(json_response['status']).to eq('confirmed')

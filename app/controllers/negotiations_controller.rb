@@ -21,7 +21,7 @@ class NegotiationsController < SmartController
 
   def create
     created_record = Negotiation.create!(params.require(:negotiation).permit!)
-        render json: created_record, status: :created
+    render json: created_record, status: :created
   end
 
   private
