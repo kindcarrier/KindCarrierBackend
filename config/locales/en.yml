@@ -34,4 +34,5 @@ en:
   active_interaction:
       errors:
         messages:
-          not_belongs: not belongs to current user
+          is_owner: is owner of negotiation already
+          has_wrong_status: with status 'opened' could be confirmed only

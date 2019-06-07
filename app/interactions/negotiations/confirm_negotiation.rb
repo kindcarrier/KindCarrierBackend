@@ -12,14 +12,14 @@ class ConfirmNegotiation < ApplicationInteractor
   private
 
   def check_for_user
-    errors.add(:negotiation, :not_belongs) unless user_linked_to_negotiation?
+    errors.add(:user, :is_owner) if user_is_owner?
   end
 
-  def user_linked_to_negotiation?
-    negotiation.owner == user || negotiation.accepter == user
+  def user_is_owner?
+    negotiation.owner == user
   end
 
   def check_for_status
-    # error.add(:negotiation, :not_acceptab)
+    errors.add(:negotiation, :has_wrong_status) unless negotiation.status == 'opened'
   end
 end
