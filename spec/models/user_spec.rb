@@ -50,5 +50,9 @@ RSpec.describe User, type: :model do
 
       it_behaves_like 'invalid'
     end
+
+    context 'valid parameters' do
+      it_behaves_like 'valid'
+    end
   end
 end
