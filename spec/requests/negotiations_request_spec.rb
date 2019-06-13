@@ -105,7 +105,7 @@ RSpec.describe 'Negotiations', type: :request do
         let(:negotiation) { create(:negotiation, owner: owner) }
         let(:id) { negotiation.id }
         let(:accepter) { create(:user) }
-        let(:authorization) { owner.token }
+        let(:authorization) { accepter.token }
 
         run_test! do
           expect(json_response['status']).to eq('confirmed')
