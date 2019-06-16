@@ -1,7 +1,6 @@
 class NegotiationsController < SmartController
   skip_before_action :authenticate_user, only: [:index]
 
-  # create allowed_params: Negotiation.attribute_names - %w[id created_at updated_at]
   show
 
   def index

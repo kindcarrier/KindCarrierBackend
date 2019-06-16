@@ -80,16 +80,19 @@
                   "photo": "test_photo.png",
                   "description": "Wanna some authentic Czech beer",
                   "service_cost": 15,
-                  "country": "Chezh",
-                  "city": "Prague",
-                  "state": "Hlavni mesto Praha",
-                  "street": "Podbelohorska",
-                  "latitude_from": 50.075455,
-                  "longitude_from": 14.37185,
-                  "latitude_to": 53.36056,
-                  "longitude_to": 83.76361,
-                  "type": "request",
-                  "owner_id": 1
+                  "owner_id": 1,
+                  "address_from": {
+                    "country": "Chezh",
+                    "city": "Prague",
+                    "state": "Hlavni mesto Praha",
+                    "street": "Podbelohorska"
+                  },
+                  "address_to": {
+                    "country": "Russia",
+                    "city": "Barnaul",
+                    "state": "Altay kray",
+                    "street": "Pionerskaya dolina"
+                  }
                 }
               }
             }
@@ -169,6 +172,50 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Wrong parameters"
+          }
+        }
+      }
+    },
+    "/negotiations/{id}/cancel": {
+      "put": {
+        "summary": "Cancel negotiation",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Negotiations"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "example": 1
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "negotiation confirmed successfully",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/negotiation"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Wrong parameters"
           }
         }
       }
@@ -254,10 +301,10 @@
                   "last_name"
                 ],
                 "example": {
-                  "email": "meghann_carroll@shanahanstiedemann.name",
-                  "first_name": "Isreal",
-                  "last_name": "Hane",
-                  "password": "Y1LSDDV0_fdLi19n"
+                  "email": "bettina@daniel.us",
+                  "first_name": "Young",
+                  "last_name": "Berge",
+                  "password": "rRxD5UwNhOWDIPY"
                 }
               }
             }
@@ -269,6 +316,13 @@
             "schema": {
               "type": "object",
               "$ref": "#/definitions/user"
+            }
+          },
+          "422": {
+            "description": "Invalid data",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/errors"
             }
           }
         }
@@ -299,8 +353,8 @@
                 }
               },
               "example": {
-                "first_name": "Kym",
-                "last_name": "Legros"
+                "first_name": "Annemarie",
+                "last_name": "Monahan"
               }
             }
           },
@@ -324,6 +378,13 @@
               "type": "object",
               "$ref": "#/definitions/user"
             }
+          },
+          "422": {
+            "description": "invalid data",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/errors"
+            }
           }
         }
       }
@@ -346,28 +407,14 @@
         "service_cost": {
           "type": "string"
         },
-        "latitude_from": {
-          "type": "number"
-        },
-        "longitude_from": {
-          "type": "number"
-        },
-        "latitude_to": {
-          "type": "number"
-        },
-        "longitude_to": {
-          "type": "number"
-        },
         "type": {
           "type": "string"
         },
         "address_from": {
-          "type": "object",
-          "x-nullable": true
+          "$ref": "#/definitions/address"
         },
         "address_to": {
-          "type": "object",
-          "x-nullable": true
+          "$ref": "#/definitions/address"
         },
         "owner_id": {
           "type": "integer",

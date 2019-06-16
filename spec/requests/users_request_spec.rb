@@ -32,6 +32,12 @@ RSpec.describe 'Users', type: :request do
           expect(json_response).to include(CREATING_EXAMPLE.as_json(only: %i[email first_name last_name]))
         end
       end
+
+      response '422', 'Invalid data' do
+        schema type: 'object', '$ref' => '#/definitions/errors'
+        let(:payload) { CREATING_EXAMPLE.merge(password: nil) }
+        run_test!
+      end
     end
   end
 
@@ -68,6 +74,17 @@ RSpec.describe 'Users', type: :request do
         run_test! do
           expect(json_response).to include(UPDATING_EXAMPLE.as_json)
         end
+      end
+
+      response '422', 'invalid data' do
+        schema type: 'object', '$ref' => '#/definitions/errors'
+
+        let(:payload) { UPDATING_EXAMPLE.merge(first_name: nil) }
+        let(:user) { create(:user) }
+        let(:id) { user.id }
+        let(:authorization) { user.token }
+
+        run_test!
       end
     end
   end
