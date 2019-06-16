@@ -36,3 +36,4 @@ en:
         messages:
           is_owner: is owner of negotiation already
           has_wrong_status: with status 'opened' could be confirmed only
+          not_confirmed: with status 'confirmed' could be canceled only
