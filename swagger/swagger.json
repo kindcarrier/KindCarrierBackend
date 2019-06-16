@@ -51,11 +51,79 @@
                 },
                 "address_from": {
                   "type": "object",
-                  "x-nullable": true
+                  "x-nullable": true,
+                  "properties": {
+                    "country": {
+                      "type": "string",
+                      "x-nullable": true
+                    },
+                    "city": {
+                      "type": "string",
+                      "x-nullable": true
+                    },
+                    "state": {
+                      "type": "string",
+                      "x-nullable": true
+                    },
+                    "street": {
+                      "type": "string",
+                      "x-nullable": true
+                    },
+                    "latitude": {
+                      "type": "number",
+                      "x-nullable": true
+                    },
+                    "longitude": {
+                      "type": "number",
+                      "x-nullable": true
+                    }
+                  },
+                  "required": [
+                    "country",
+                    "city",
+                    "state",
+                    "street",
+                    "latitude",
+                    "longitude"
+                  ]
                 },
                 "address_to": {
                   "type": "object",
-                  "x-nullable": true
+                  "x-nullable": true,
+                  "properties": {
+                    "country": {
+                      "type": "string",
+                      "x-nullable": true
+                    },
+                    "city": {
+                      "type": "string",
+                      "x-nullable": true
+                    },
+                    "state": {
+                      "type": "string",
+                      "x-nullable": true
+                    },
+                    "street": {
+                      "type": "string",
+                      "x-nullable": true
+                    },
+                    "latitude": {
+                      "type": "number",
+                      "x-nullable": true
+                    },
+                    "longitude": {
+                      "type": "number",
+                      "x-nullable": true
+                    }
+                  },
+                  "required": [
+                    "country",
+                    "city",
+                    "state",
+                    "street",
+                    "latitude",
+                    "longitude"
+                  ]
                 },
                 "owner_id": {
                   "type": "integer"
@@ -81,17 +149,22 @@
                   "description": "Wanna some authentic Czech beer",
                   "service_cost": 15,
                   "owner_id": 1,
+                  "type ": "request",
                   "address_from": {
                     "country": "Chezh",
                     "city": "Prague",
                     "state": "Hlavni mesto Praha",
-                    "street": "Podbelohorska"
+                    "street": "Podbelohorska",
+                    "latitude": 50,
+                    "longitude": 70
                   },
                   "address_to": {
                     "country": "Russia",
                     "city": "Barnaul",
                     "state": "Altay kray",
-                    "street": "Pionerskaya dolina"
+                    "street": "Pionerskaya dolina",
+                    "latitude": 80,
+                    "longitude": 95
                   }
                 }
               }
@@ -301,10 +374,10 @@
                   "last_name"
                 ],
                 "example": {
-                  "email": "bettina@daniel.us",
-                  "first_name": "Young",
-                  "last_name": "Berge",
-                  "password": "rRxD5UwNhOWDIPY"
+                  "email": "henry.grant@swift.name",
+                  "first_name": "Melia",
+                  "last_name": "Oberbrunner",
+                  "password": "ISq1GDWJWnQQ3j"
                 }
               }
             }
@@ -353,8 +426,8 @@
                 }
               },
               "example": {
-                "first_name": "Annemarie",
-                "last_name": "Monahan"
+                "first_name": "Abel",
+                "last_name": "King"
               }
             }
           },

@@ -12,7 +12,7 @@ RSpec.describe 'Negotiations', type: :request do
         description: 'Wanna some authentic Czech beer',
         service_cost: 15,
         owner_id: 1,
-        type: 'request',
+        'type ': 'request',
         address_from: {
           country: 'Chezh',
           city: 'Prague',
@@ -43,8 +43,32 @@ RSpec.describe 'Negotiations', type: :request do
           state: { type: :string },
           street: { type: :string },
           type: { type: :string },
-          address_from: { type: :object, 'x-nullable': true },
-          address_to: { type: :object, 'x-nullable': true },
+          address_from: {
+            type: :object,
+            'x-nullable': true,
+            properties: {
+              country: { type: :string, 'x-nullable': true },
+              city: { type: :string, 'x-nullable': true },
+              state: { type: :string, 'x-nullable': true },
+              street: { type: :string, 'x-nullable': true },
+              latitude: { type: :number, 'x-nullable': true },
+              longitude: { type: :number, 'x-nullable': true }
+            },
+            required: %w[country city state street latitude longitude]
+          },
+          address_to: {
+            type: :object,
+            'x-nullable': true,
+            properties: {
+              country: { type: :string, 'x-nullable': true },
+              city: { type: :string, 'x-nullable': true },
+              state: { type: :string, 'x-nullable': true },
+              street: { type: :string, 'x-nullable': true },
+              latitude: { type: :number, 'x-nullable': true },
+              longitude: { type: :number, 'x-nullable': true }
+            },
+            required: %w[country city state street latitude longitude]
+          },
           owner_id: { type: :integer },
           required: %w[name photo description service_cost country
                        city state street latitude_from longitude_from latitude_to
