@@ -3,14 +3,29 @@ require 'rails_helper'
 RSpec.describe ConfirmNegotiation do
   let(:accepter) { create(:user) }
   let(:owner) { create(:user) }
-  let(:negotiation) { create(:negotiation, owner_id: owner.id) }
+  let(:negotiation) { create(:negotiation, owner_id: owner.id, status: status) }
+  let(:status) { :opened }
   let(:command) { described_class.run(negotiation: negotiation, user: accepter) }
 
-  context 'owner id and accepter id are the same' do
-    let(:accepter) { owner }
+  describe 'Validations' do
+    it 'is valid' do
+      expect(command).to be_valid
+    end
 
-    it 'returns error' do
-      expect(command.errors.full_messages).to include('User is owner of negotiation already')
+    context 'owner id and accepter id are the same' do
+      let(:accepter) { owner }
+
+      it 'returns error' do
+        expect(command.errors.full_messages).to include('User is owner of negotiation already')
+      end
+    end
+
+    context 'negotiation is confirmed already' do
+      let(:status) { :confirmed }
+
+      it 'returns error' do
+        expect(command.errors.full_messages).to include('Negotiation with status \'opened\' could be confirmed only')
+      end
     end
   end
 

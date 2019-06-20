@@ -150,7 +150,6 @@ RSpec.describe 'Negotiations', type: :request do
 
       # TODO: refactor to 422 status
       # TODO add schema checkers for errors
-      # TODO add tests for interactors
       response '500', 'Wrong parameters' do
         context 'user is owner of negotiation' do
           let(:authorization) { owner.token }
