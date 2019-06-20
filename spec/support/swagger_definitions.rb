@@ -40,7 +40,7 @@ module SwaggerDefinitions
         photo: { type: :string, 'x-nullable': true },
         description: { type: :string },
         service_cost: { type: :string },
-        type: { type: :string },
+        'type ': { type: :string },
         address_from: { '$ref' => '#/definitions/address' },
         address_to: { '$ref' => '#/definitions/address' },
         owner_id: { type: :integer, 'x-nullable': true },

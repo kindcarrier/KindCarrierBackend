@@ -5,6 +5,7 @@ class ApiController < ActionController::API
 
   rescue_from StandardError, with: :internal_error
   rescue_from Exceptions::UnauthorizedError, with: :unauthorized_error_response
+  rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
 
   def authenticate_user
     user = User.find_by(token: request.headers[:Authorization])
@@ -23,5 +24,12 @@ class ApiController < ActionController::API
     render json: { message: exception.message,
                    code: Api::INTERNAL_SERVER_ERROR },
            status: :internal_server_error
+  end
+
+  def unprocessable_entity_response(exception)
+    render json: { message: 'Validation Error',
+                   errors: exception.record.errors,
+                   code: Api::VALIDATION_ERROR },
+           status: :unprocessable_entity
   end
 end

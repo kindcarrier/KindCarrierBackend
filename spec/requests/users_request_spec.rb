@@ -34,7 +34,6 @@ RSpec.describe 'Users', type: :request do
       end
 
       response '422', 'Invalid data' do
-        schema type: 'object', '$ref' => '#/definitions/errors'
         let(:payload) { CREATING_EXAMPLE.merge(password: nil) }
         run_test!
       end
@@ -77,7 +76,7 @@ RSpec.describe 'Users', type: :request do
       end
 
       response '422', 'invalid data' do
-        schema type: 'object', '$ref' => '#/definitions/errors'
+        # schema type: 'object', '$ref' => '#/definitions/errors'
 
         let(:payload) { UPDATING_EXAMPLE.merge(first_name: nil) }
         let(:user) { create(:user) }
