@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/kindcarrier/KindCarrierBackend.svg?branch=master)](https://travis-ci.com/kindcarrier/KindCarrierBackend)
+
 # Kind Carrier
 
 This project was created for hackathon idea implementation.
