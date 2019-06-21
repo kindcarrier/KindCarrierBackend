@@ -37,6 +37,8 @@ gem 'factory_bot_rails'
 gem 'ffaker'
 gem 'kaminari'
 
+gem 'travis'
+
 group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
