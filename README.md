@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.com/kindcarrier/KindCarrierBackend.svg?branch=master)](https://travis-ci.com/kindcarrier/KindCarrierBackend)
-[![Coverage](https://serene-journey-16504.herokuapp.com/badge.svg)](https://github.com/kindcarrier/KindCarrierBackend)
+[![Coverage](https://raw.githubusercontent.com/kindcarrier/KindCarrierBackend/master/badge.svg)](https://github.com/kindcarrier/KindCarrierBackend)
 
 # Kind Carrier
 
