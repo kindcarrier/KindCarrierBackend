@@ -1,0 +1,5 @@
+test:
+  adapter: postgresql
+  database: KindCarrierBackend_test
+  username: postgres
+  encoding: utf8
