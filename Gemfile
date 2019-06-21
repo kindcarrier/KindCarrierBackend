@@ -37,8 +37,6 @@ gem 'factory_bot_rails'
 gem 'ffaker'
 gem 'kaminari'
 
-gem 'travis'
-
 group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
@@ -50,6 +48,7 @@ group :development, :test do
   gem 'rswag-specs'
   gem 'rubocop', '~> 0.61.1', require: false
   gem 'sqlite3', '~> 1.3.6'
+  gem 'travis'
   gem 'vcr'
   gem 'webmock'
 end
@@ -59,6 +58,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+end
+
+group :test do
+  gem 'simplecov-shields-badge', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

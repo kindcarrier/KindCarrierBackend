@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/kindcarrier/KindCarrierBackend.svg?branch=master)](https://travis-ci.com/kindcarrier/KindCarrierBackend)
+[![Coverage](https://kindcarrier.github.io/KindCarrierBackend/badge.svg)](https://github.com/kindcarrier/KindCarrierBackend)
 
 # Kind Carrier
 
