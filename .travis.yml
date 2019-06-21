@@ -1,22 +1,25 @@
 language: ruby
 rvm:
-  - 2.6.1
+- 2.6.1
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 script:
-  - bundle install --jobs=3 --retry=3
-  - bundle exec rake db:create
-  - bundle exec rake db:migrate
-  - bundle exec rspec
-  - bundle exec rubocop
+- bundle install --jobs=3 --retry=3
+- bundle exec rake db:create
+- bundle exec rake db:migrate
+- bundle exec rspec
+- bundle exec rubocop
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 notifications:
-  - false
+- false
 env:
   global:
-    - CC_TEST_REPORTER_ID=42f5ca5f88c526ac3b9464d949e97f630fc605b5eb23262a3c6f5f23b35f2b67
+  - CC_TEST_REPORTER_ID=42f5ca5f88c526ac3b9464d949e97f630fc605b5eb23262a3c6f5f23b35f2b67
+deploy:
+  api_key:
+    secure: arWdORlJQL79yR35G7lR+ubyBi5yvqSP1eqtTQsNBb72NThbHa2r+ZSspKgf71U/CPC/geKDC51Gbr2uUUVkvQD47yWnIXmyYy5BJs5xnJiZDTt063eQjHei3jI1cUO3a9hvYIqlfHAJ68x8dhFkz6DrfC9JMa7H/idn0MAI9rgTPwicXuM2rt1xxhAlO13PmGLLIH5V6Tmi+HnAsZVquP5PiKQap6RkP2z4lgGjCE9qndP1OY5l5GI9di0FTQ5iNV+qPJRsTHO4QXyJpIDtxZi/Hk1r4vyHD4Dh6IRUyS1ZftrPyPnkGzgWbDTR47n5bRsYIQ/3Wg1GEOogVM8nRCEj5nYvED4xuKymUoAm0VmR/UB1L0I6+Jwd5xJhy3pqsVObHjnfeG6zdoXAKjyrng9ROVxoHsWg7PYh7JSM1Mwm1H2KmvEU20dVKwd0qi6Agc9W/Lve3A4XfHUmf9Hjspx9RNM2hAmKnpKQcPH8XBVD6cIbfa5D8TTUbweQwXgDIoVA1sQeHSU17J7x+W02cLIfEKWcdjqZniCJDxu3vCPpCTJAQMeYLKU2UslJFC1C/MzsaJzAU8m/N2D/qEd3G8gLhj9mX4P2EONMeq7quHDFuTXxJIgYfL8C+VUz34Sco/leW7n6fAHtmNNGeAPZXB2dIPY7K9WR55ZFyRm0NnA=
