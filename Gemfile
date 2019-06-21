@@ -61,7 +61,8 @@ group :development do
 end
 
 group :test do
-  gem 'simplecov-shields-badge', require: false
+  gem 'simplecov', require: false
+  gem 'simplecov-console', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
