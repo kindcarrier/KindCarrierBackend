@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/kindcarrier/KindCarrierBackend.svg?branch=master)](https://travis-ci.com/kindcarrier/KindCarrierBackend)
-[![Coverage](https://raw.githubusercontent.com/kindcarrier/KindCarrierBackend/master/badge.svg)](https://github.com/kindcarrier/KindCarrierBackend)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b1ca1d0761a089416913/maintainability)](https://codeclimate.com/github/kindcarrier/KindCarrierBackend/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b1ca1d0761a089416913/test_coverage)](https://codeclimate.com/github/kindcarrier/KindCarrierBackend/test_coverage)
 
 # Kind Carrier
 
