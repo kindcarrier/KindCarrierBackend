@@ -4,4 +4,5 @@ rvm:
 services:
  - postgresql
 before_script:
+ - psql -c 'create database KindCarrierBackend_test;' -U postgres
  - cp config/database.yml.example config/database.yml
