@@ -2,30 +2,30 @@ language: ruby
 rvm:
 - 2.6.1
 services:
-  - postgresql
+- postgresql
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - "./cc-test-reporter before-build"
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 script:
-  - bundle install --jobs=3 --retry=3
-  - bundle exec rake db:create
-  - bundle exec rake db:migrate
-  - bundle exec rspec
-  - bundle exec rubocop
+- bundle install --jobs=3 --retry=3
+- bundle exec rake db:create
+- bundle exec rake db:migrate
+- bundle exec rspec
+- bundle exec rubocop
 after_script:
 - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 notifications:
 - false
 env:
   global:
-    - CC_TEST_REPORTER_ID=42f5ca5f88c526ac3b9464d949e97f630fc605b5eb23262a3c6f5f23b35f2b67
+  - CC_TEST_REPORTER_ID=42f5ca5f88c526ac3b9464d949e97f630fc605b5eb23262a3c6f5f23b35f2b67
 deploy:
   provider: heroku
   api_key:
-    secure: glByR4wXsozQMi7gdcaeSqJTYqgBuO9SIXrz/mmiYFQf3NYNuTm2zVa5yWsGk1qsliqpnk9iVTN6ZXlU6vR9vR4mniEE77nIpDAfHByEGAvdcu3mp0s47RMtF5HFZc1LtKpSLJ+lFziylw0Ov2vT4Uj1AnaF1GlqcMn5iNc2m+J1FU/gW/4QZSL0ypxKJNizZDzpv3jRmi4VUQ4uvUEwt2ilDqhaIIIx7lC6Y75Cef+liWPFlvaxArUcs7QkjoJ23EteW22nMCXXBAY7B94a90l6tlHIXD899BA1Aswfw7xzCQk4RDWlVTJcCeOo00ACiGARlW1zZaBfSS5vUP44cWGoAdRJR4maBVd9QGpPTjfAAFdfRf3HQ/+gzV7Rt6Fswp1lx2SkCtrhqCz4gYdQBEW5rnJdHWVxGbnq4w9aYqlADW0t4F7JAe+jGjIjX2QOAGeFFa4AWZC5n5Mdvu0h7KJmeXByZeDubLgDPvAybg7Apo4pPrz9WAG5xGAiEErUCmtlJsnDxGFqk1S8+Ff6r8y8oNnzcmC8xCLKuv1qUQ4kOPNX+aK9GispVVqAe57GccAhdd2M7DSIalQ84rJ6nhFiEQoOkxGfAIL0jEC1X/2bXMbsrOabOL6nZKTjNLvIc/yy80xqRwQeTkixhqK3oygo2Iw3Qk5ZAnvelv8GLaI=
+    secure: IDU2BVRpUIKER0C0blWHfnm2KasTPU5XJ7JXacpGi6zRnpW+/k9Mor12CVH6jMzd1xTBV4/ZdGZRnJOg0kVMx/Ru3Fd10VNHYcO06oei6LO2UPBIpOm3zmnmTeoCz/+72N0k9lXyUIAFBzRrRR9WHocr1bpnG0/psW7V4ECVWSzyKouc4NmCj565OjSwy4HYLxAYWya9nnBriFALUd9k/dW9ZiSr+efMe1tUHrLMSBR5bvrsIFn+K7YPRYQRtGqfLHUSIw72pgTelTLAlaRUuvC8izSHxYmqlM/IYyA3P6xdXjLfj4675RsxXJG/UlvGrTVFd8PKxRORMtNWku2zZST818ZZ7B5Wc+S3yJVx9qUu8ESfYXTjwN6bQB8P6GuzCOP97U3BmQc8aZ4lrV8q03NTHBewLoKwn6cauEfSS+zpekts2DzzuGamJ317YQoeFsdicJZ2ni0BGwpVrtHGq5jiY3aQRCl2tCJ4dJruDeYyyvVmHIa8N57+vvugE5rxuO0rfFEBmBAZ0mIaE3LQ6o8TXOKCKG4I7+WMbVP8IH0ACAf8WcdOa0q8ffqiXvnGL5sOPS/QDDwLF2ixmFYbLIy/BIn49a17izLK3vTWVUECP75V/3kXLBsj4Tot8WNTczdiVUm9FPbcGlVRudjLDrcCe2FYjcgm+MomSr+DHdA=
   app: serene-journey-16504
   on:
     repo: kindcarrier/KindCarrierBackend
