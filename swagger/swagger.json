@@ -5,6 +5,128 @@
     "version": "v1"
   },
   "paths": {
+    "/messages/{id}": {
+      "post": {
+        "summary": "Create message",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Message"
+        ],
+        "parameters": [
+          {
+            "name": "payload",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "negotiation_id": {
+                  "type": "integer"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "required": [
+                  "negotiation_id",
+                  "text"
+                ],
+                "example": {
+                  "negotiation_id": 1,
+                  "text": "Message's text"
+                }
+              }
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "example": 1
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Message created",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/message"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "No negotiation found",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Fetch messages",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "Messages"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch messages successfully",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/message"
+              }
+            }
+          },
+          "422": {
+            "description": "No negotiation found",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "No negotiation found",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
     "/negotiations": {
       "post": {
         "summary": "Create negotiation",
@@ -174,7 +296,11 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/error"
+            }
           }
         }
       },
@@ -232,10 +358,18 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/error"
+            }
           },
           "422": {
-            "description": "Wrong parameters"
+            "description": "Wrong parameters",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/error"
+            }
           }
         }
       }
@@ -273,10 +407,18 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/error"
+            }
           },
           "422": {
-            "description": "Wrong parameters"
+            "description": "Wrong parameters",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/error"
+            }
           }
         }
       }
@@ -362,10 +504,10 @@
                   "last_name"
                 ],
                 "example": {
-                  "email": "gayle_hoppe@lednermurray.name",
-                  "first_name": "Santa",
-                  "last_name": "Goldner",
-                  "password": "UpPxZnd3XRzuUEL"
+                  "email": "quentin@gerlach.ca",
+                  "first_name": "Mammie",
+                  "last_name": "Lindgren",
+                  "password": "qUV4bkkveg1"
                 }
               }
             }
@@ -449,8 +591,8 @@
                 }
               },
               "example": {
-                "first_name": "Zackary",
-                "last_name": "Morissette"
+                "first_name": "Mickey",
+                "last_name": "Lynch"
               }
             }
           },
@@ -637,6 +779,25 @@
       },
       "required": [
         "url"
+      ]
+    },
+    "message": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "negotiation_id": {
+          "type": "integer"
+        },
+        "user_id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "text",
+        "negotiation_id",
+        "user_id"
       ]
     },
     "address": {

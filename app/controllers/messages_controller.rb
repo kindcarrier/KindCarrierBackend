@@ -17,7 +17,7 @@ class MessagesController < ApiController
 
   def default_params
     {
-      negotiation_id: params[:negotiation_id],
+      negotiation_id: params[:id],
       user: current_user
     }
   end

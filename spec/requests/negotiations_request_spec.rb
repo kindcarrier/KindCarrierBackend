@@ -88,6 +88,8 @@ RSpec.describe 'Negotiations', type: :request do
       end
 
       response '401', 'Unauthorized' do
+        schema type: 'object', '$ref' => '#/definitions/error'
+
         let(:authorization) { 'non_existing_token' }
         let(:payload) { NEGOTIATION_CREATE_EXAMPLE }
 
@@ -139,12 +141,16 @@ RSpec.describe 'Negotiations', type: :request do
       end
 
       response '401', 'Unauthorized' do
+        schema type: 'object', '$ref' => '#/definitions/error'
+
         let(:authorization) { 'no' }
 
         run_test!
       end
 
       response '422', 'Wrong parameters' do
+        schema type: 'object', '$ref' => '#/definitions/error'
+
         context 'user is owner of negotiation' do
           let(:authorization) { owner.token }
 
@@ -195,12 +201,16 @@ RSpec.describe 'Negotiations', type: :request do
       end
 
       response '401', 'Unauthorized' do
+        schema type: 'object', '$ref' => '#/definitions/error'
+
         let(:authorization) { 'no' }
 
         run_test!
       end
 
       response '422', 'Wrong parameters' do
+        schema type: 'object', '$ref' => '#/definitions/error'
+
         context 'cancelator is not owner nor accepter' do
           let(:some_user) { create(:user) }
           let(:authorization) { some_user.token }
