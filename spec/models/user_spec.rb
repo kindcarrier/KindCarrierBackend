@@ -55,4 +55,29 @@ RSpec.describe User, type: :model do
       it_behaves_like 'valid'
     end
   end
+
+  describe 'authentication' do
+    let(:authenticate_result) { described_class.authenticate!(email, auth_password) }
+    let(:auth_password) { password }
+
+    it 'raises exception if no user' do
+      expect { authenticate_result }.to raise_error Exceptions::UnauthorizedError
+    end
+
+    context 'created user' do
+      let!(:created_user) { user.save! }
+
+      it 'returns user' do
+        expect(authenticate_result).to eq(user)
+      end
+
+      context 'wrong password' do
+        let(:auth_password) { 'ama_wrong' }
+
+        it 'raises exception' do
+          expect { authenticate_result }.to raise_error Exceptions::UnauthorizedError
+        end
+      end
+    end
+  end
 end

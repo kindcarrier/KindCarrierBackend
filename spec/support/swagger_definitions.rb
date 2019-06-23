@@ -1,10 +1,22 @@
 module SwaggerDefinitions
   def self.swagger_definitions
     {
+      error: error,
       negotiation: negotiation,
       user: user,
       avatar: avatar,
       address: address
+    }
+  end
+
+  def self.error
+    {
+      type: :object,
+      properties: {
+        message: { type: :string },
+        code: { type: :string }
+      },
+      required: %w[message code]
     }
   end
 
