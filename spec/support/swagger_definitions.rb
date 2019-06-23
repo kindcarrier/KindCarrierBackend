@@ -1,10 +1,23 @@
 module SwaggerDefinitions
   def self.swagger_definitions
     {
+      error: error,
       negotiation: negotiation,
       user: user,
       avatar: avatar,
+      message: message,
       address: address
+    }
+  end
+
+  def self.error
+    {
+      type: :object,
+      properties: {
+        message: { type: :string },
+        code: { type: :string }
+      },
+      required: %w[message code]
     }
   end
 
@@ -19,6 +32,18 @@ module SwaggerDefinitions
         avatar: { '$ref' => '#/definitions/avatar' }
       },
       required: %w[email first_name last_name avatar]
+    }
+  end
+
+  def self.message
+    {
+      type: :object,
+      properties: {
+        text: { type: :string },
+        negotiation_id: { type: :integer },
+        user_id: { type: :integer }
+      },
+      required: %w[text negotiation_id user_id]
     }
   end
 
