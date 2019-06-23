@@ -4,7 +4,7 @@ RSpec.describe 'Messages', type: :request do
   path '/messages/{id}' do
     post('Create message') do
       consumes 'application/json'
-      tags 'Message'
+      tags 'Messages'
 
       MESSAGE_CREATE_EXAMPLE = {
         negotiation_id: 1,
