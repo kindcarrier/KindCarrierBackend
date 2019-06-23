@@ -12,7 +12,7 @@
           "application/json"
         ],
         "tags": [
-          "Message"
+          "Messages"
         ],
         "parameters": [
           {
@@ -504,10 +504,10 @@
                   "last_name"
                 ],
                 "example": {
-                  "email": "quentin@gerlach.ca",
-                  "first_name": "Mammie",
-                  "last_name": "Lindgren",
-                  "password": "qUV4bkkveg1"
+                  "email": "jeana.mertz@herman.ca",
+                  "first_name": "Erlinda",
+                  "last_name": "Torphy",
+                  "password": "0kvY352AsC9"
                 }
               }
             }
@@ -591,8 +591,8 @@
                 }
               },
               "example": {
-                "first_name": "Mickey",
-                "last_name": "Lynch"
+                "first_name": "Ora",
+                "last_name": "Hansen"
               }
             }
           },
