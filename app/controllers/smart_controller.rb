@@ -2,14 +2,14 @@ class SmartController < ApiController
   class << self
     def create(allowed_params:)
       define_method :create do
-        created_record = model.create!(params.permit(allowed_params))
+        created_record = model.create!(creating_params(allowed_params))
         render json: created_record, status: :created
       end
     end
 
     def update(allowed_params:)
       define_method :update do
-        record_by_id.update!(params.permit(allowed_params))
+        record_by_id.update!(updating_params(allowed_params))
         render json: record_by_id, status: :ok
       end
     end
@@ -29,6 +29,18 @@ class SmartController < ApiController
   end
 
   private
+
+  def common_params(allowed_params)
+    params.permit(allowed_params)
+  end
+
+  def creating_params(allowed_params)
+    common_params(allowed_params)
+  end
+
+  def updating_params(allowed_params)
+    common_params(allowed_params)
+  end
 
   def model
     @model ||= controller_name.singularize.titleize.constantize

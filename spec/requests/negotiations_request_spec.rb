@@ -38,10 +38,6 @@ RSpec.describe 'Negotiations', type: :request do
           photo: { type: :string },
           description: { type: :string },
           service_cost: { type: :string },
-          country: { type: :string },
-          city: { type: :string },
-          state: { type: :string },
-          street: { type: :string },
           type: { type: :string },
           address_from: {
             type: :object,
@@ -148,9 +144,7 @@ RSpec.describe 'Negotiations', type: :request do
         run_test!
       end
 
-      # TODO: refactor to 422 status
-      # TODO add schema checkers for errors
-      response '500', 'Wrong parameters' do
+      response '422', 'Wrong parameters' do
         context 'user is owner of negotiation' do
           let(:authorization) { owner.token }
 
@@ -206,8 +200,7 @@ RSpec.describe 'Negotiations', type: :request do
         run_test!
       end
 
-      # TODO: refactor to 422 status
-      response '500', 'Wrong parameters' do
+      response '422', 'Wrong parameters' do
         context 'cancelator is not owner nor accepter' do
           let(:some_user) { create(:user) }
           let(:authorization) { some_user.token }

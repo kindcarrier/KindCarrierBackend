@@ -2,6 +2,9 @@ class NegotiationsController < SmartController
   skip_before_action :authenticate_user, only: [:index]
 
   show
+  create allowed_params: { negotiation: %i[name photo description service_cost type
+                                           owner_id] + [address_from: %i[country city state street latitude longitude],
+                                                        address_to: %i[country city state street latitude longitude]] }
 
   def index
     negotiations = FetchNegotiations.run!(params)
@@ -18,12 +21,11 @@ class NegotiationsController < SmartController
     render json: negotiation, status: :ok
   end
 
-  def create
-    created_record = Negotiation.create!(params.require(:negotiation).permit!)
-    render json: created_record, status: :created
-  end
-
   private
+
+  def creating_params(allowed_params)
+    params.permit(allowed_params)[:negotiation]
+  end
 
   def change_status_params
     {
