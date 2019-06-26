@@ -65,11 +65,11 @@ module SwaggerDefinitions
         photo: { type: :string, 'x-nullable': true },
         description: { type: :string },
         service_cost: { type: :string },
-        'type ': { type: :string },
+        'type ': { type: :string, enum: %w[request offer] },
         address_from: { '$ref' => '#/definitions/address' },
         address_to: { '$ref' => '#/definitions/address' },
         owner_id: { type: :integer, 'x-nullable': true },
-        accepter: { type: :integer, 'x-nullable': true }
+        accepter_id: { type: :integer, 'x-nullable': true }
       },
       required: %w[name photo description service_cost address_from address_to type owner_id accepter_id]
     }

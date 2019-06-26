@@ -10,8 +10,7 @@ RSpec.describe 'Negotiations', type: :request do
         name: 'Chezh beer',
         photo: 'test_photo.png',
         description: 'Wanna some authentic Czech beer',
-        service_cost: 15,
-        owner_id: 1,
+        service_cost: 15.0,
         'type ': 'request',
         address_from: {
           country: 'Chezh',
@@ -37,8 +36,8 @@ RSpec.describe 'Negotiations', type: :request do
           name: { type: :string },
           photo: { type: :string },
           description: { type: :string },
-          service_cost: { type: :string },
-          type: { type: :string },
+          service_cost: { type: :number },
+          type: { type: :string, enum: %w[request offer] },
           address_from: {
             type: :object,
             'x-nullable': true,
@@ -65,7 +64,6 @@ RSpec.describe 'Negotiations', type: :request do
             },
             required: %w[country city state street latitude longitude]
           },
-          owner_id: { type: :integer },
           required: %w[name photo description service_cost country
                        city state street latitude_from longitude_from latitude_to
                        longitude_to type],

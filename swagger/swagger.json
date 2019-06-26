@@ -154,10 +154,14 @@
                   "type": "string"
                 },
                 "service_cost": {
-                  "type": "string"
+                  "type": "number"
                 },
                 "type": {
-                  "type": "string"
+                  "type": "string",
+                  "enum": [
+                    "request",
+                    "offer"
+                  ]
                 },
                 "address_from": {
                   "type": "object",
@@ -235,9 +239,6 @@
                     "longitude"
                   ]
                 },
-                "owner_id": {
-                  "type": "integer"
-                },
                 "required": [
                   "name",
                   "photo",
@@ -257,8 +258,7 @@
                   "name": "Chezh beer",
                   "photo": "test_photo.png",
                   "description": "Wanna some authentic Czech beer",
-                  "service_cost": 15,
-                  "owner_id": 1,
+                  "service_cost": 15.0,
                   "type ": "request",
                   "address_from": {
                     "country": "Chezh",
@@ -504,10 +504,10 @@
                   "last_name"
                 ],
                 "example": {
-                  "email": "jeana.mertz@herman.ca",
-                  "first_name": "Erlinda",
-                  "last_name": "Torphy",
-                  "password": "0kvY352AsC9"
+                  "email": "chantel@weissnatokuneva.name",
+                  "first_name": "Katelynn",
+                  "last_name": "Bogan",
+                  "password": "d537PyAm"
                 }
               }
             }
@@ -591,8 +591,8 @@
                 }
               },
               "example": {
-                "first_name": "Ora",
-                "last_name": "Hansen"
+                "first_name": "Tawnya",
+                "last_name": "Lubowitz"
               }
             }
           },
@@ -714,7 +714,11 @@
           "type": "string"
         },
         "type ": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "request",
+            "offer"
+          ]
         },
         "address_from": {
           "$ref": "#/definitions/address"
@@ -726,7 +730,7 @@
           "type": "integer",
           "x-nullable": true
         },
-        "accepter": {
+        "accepter_id": {
           "type": "integer",
           "x-nullable": true
         }
