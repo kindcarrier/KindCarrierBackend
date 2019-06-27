@@ -4,6 +4,9 @@ class Negotiation < ApplicationRecord
   belongs_to :accepter, class_name: 'User', required: false
   has_many :messages, dependent: :destroy
 
+  validates :name, :description, :service_cost, :status, presence: true
+  validates :service_cost, numericality: { greater_than_or_equal_to: 0 }
+
   module TYPES
     REQUEST = 0
     OFFER = 1
