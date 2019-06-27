@@ -504,10 +504,10 @@
                   "last_name"
                 ],
                 "example": {
-                  "email": "chantel@weissnatokuneva.name",
-                  "first_name": "Katelynn",
-                  "last_name": "Bogan",
-                  "password": "d537PyAm"
+                  "email": "carolyn.schroeder@kunze.us",
+                  "first_name": "Albert",
+                  "last_name": "Dach",
+                  "password": "Ky9egROWov3J4_x"
                 }
               }
             }
@@ -591,8 +591,8 @@
                 }
               },
               "example": {
-                "first_name": "Tawnya",
-                "last_name": "Lubowitz"
+                "first_name": "Jacqulyn",
+                "last_name": "Wiegand"
               }
             }
           },
@@ -720,11 +720,22 @@
             "offer"
           ]
         },
+        "status": {
+          "type": "string",
+          "enum": [
+            "opened",
+            "confirmed",
+            "canceled",
+            "done"
+          ]
+        },
         "address_from": {
-          "$ref": "#/definitions/address"
+          "$ref": "#/definitions/address",
+          "x-nullable": true
         },
         "address_to": {
-          "$ref": "#/definitions/address"
+          "$ref": "#/definitions/address",
+          "x-nullable": true
         },
         "owner_id": {
           "type": "integer",
@@ -737,14 +748,7 @@
       },
       "required": [
         "name",
-        "photo",
-        "description",
-        "service_cost",
-        "address_from",
-        "address_to",
-        "type",
-        "owner_id",
-        "accepter_id"
+        "description"
       ]
     },
     "user": {

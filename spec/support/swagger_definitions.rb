@@ -66,12 +66,13 @@ module SwaggerDefinitions
         description: { type: :string },
         service_cost: { type: :string },
         'type ': { type: :string, enum: %w[request offer] },
-        address_from: { '$ref' => '#/definitions/address' },
-        address_to: { '$ref' => '#/definitions/address' },
+        status: { type: :string, enum: %w[opened confirmed canceled done] },
+        address_from: { '$ref' => '#/definitions/address', 'x-nullable' => true },
+        address_to: { '$ref' => '#/definitions/address', 'x-nullable' => true },
         owner_id: { type: :integer, 'x-nullable': true },
         accepter_id: { type: :integer, 'x-nullable': true }
       },
-      required: %w[name photo description service_cost address_from address_to type owner_id accepter_id]
+      required: %w[name description]
     }
   end
 
