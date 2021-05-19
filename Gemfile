@@ -6,7 +6,7 @@ gem 'active_model_serializers'
 gem 'pg'
 gem 'rails', '~> 5.2.2'
 # Use Puma as the app server
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
 gem 'carrierwave', '~> 1.0'
 gem 'sass-rails', '~> 5.0'
